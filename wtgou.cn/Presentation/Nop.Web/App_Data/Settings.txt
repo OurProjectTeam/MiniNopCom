@@ -1,0 +1,2 @@
+DataProvider: sqlserver
+DataConnectionString: Data Source=139.196.40.193;Initial Catalog=NopCommerceDB;User ID=NopComAccount2010;Password=NopComPwd#$@2010
