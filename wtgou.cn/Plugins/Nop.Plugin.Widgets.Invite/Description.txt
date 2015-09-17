@@ -1,0 +1,8 @@
+﻿Group: Widgets
+FriendlyName: Invite New User
+SystemName: Widgets.Invite
+Version: 1.0
+SupportedVersions: 3.60
+Author: tomkluas
+DisplayOrder: 1
+FileName: Nop.Plugin.Widgets.Invite.dll
