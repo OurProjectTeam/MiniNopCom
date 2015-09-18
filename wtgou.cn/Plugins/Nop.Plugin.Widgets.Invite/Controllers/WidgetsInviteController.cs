@@ -22,6 +22,19 @@ namespace Nop.Plugin.Widgets.Invite.Controllers
             return View();
         }
 
+        [HttpPost]
+        [AdminAuthorize]
+        [ChildActionOnly]
+        public ActionResult Configure(int i)
+        {
+            return View();
+        }
+
+        [ChildActionOnly]
+        public ActionResult PublicInfo()
+        {
+            return View();
+        }
 
     }
 }
