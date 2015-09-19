@@ -16,14 +16,11 @@ namespace Nop.Plugin.Widgets.Invite
 {
     public class InvitePlugin : BasePlugin, IWidgetPlugin
     {
-        private readonly IPictureService _pictureService;
         private readonly ISettingService _settingService;
         private readonly IWebHelper _webHelper;
 
-        public InvitePlugin(IPictureService pictureService,
-            ISettingService settingService, IWebHelper webHelper)
+        public InvitePlugin(ISettingService settingService, IWebHelper webHelper)
         {
-            this._pictureService = pictureService;
             this._settingService = settingService;
             this._webHelper = webHelper;
         }
