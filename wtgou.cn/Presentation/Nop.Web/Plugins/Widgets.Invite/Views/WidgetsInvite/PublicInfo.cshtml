@@ -1,0 +1,49 @@
+﻿@model Nop.Plugin.Widgets.Invite.Models.PublicInfoModel
+@{
+    Layout = "";
+
+}
+@using Nop.Web.Framework.UI
+
+<div class="page account-page order-list-page">
+    <div class="page-body">
+        @if (Model.List.Count > 0)
+        {
+            <div class="section recurring-payments">
+                <div class="title">
+                    <strong>我的邀请码</strong>
+                </div>
+                @using (Html.BeginForm())
+                {
+                    <div class="table-wrapper">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th class="start-date">
+                                        邀请码
+                                    </th>
+                                    <th class="cycle-info">
+                                        使用情况
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.List)
+                                {
+                                    <tr>
+                                        <td class="start-date">
+                                            @item.Code
+                                        </td>
+                                        <td class="cycle-info">
+                                            @(item.IsUsed ? "已使用" : "未使用")
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+</div>

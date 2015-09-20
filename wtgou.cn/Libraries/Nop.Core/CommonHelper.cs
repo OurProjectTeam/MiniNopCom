@@ -331,5 +331,20 @@ namespace Nop.Core
             Thread.CurrentThread.CurrentCulture = culture;
             Thread.CurrentThread.CurrentUICulture = culture;
         }
+
+        /// <summary>
+        /// long Guid To Short
+        /// </summary>
+        /// <returns></returns>
+        public static string ShortUniqueCode()
+        {
+            string code = GuidCode();
+            return code.GetHashCode().ToString();
+        }
+
+        public static string GuidCode()
+        {
+            return Guid.NewGuid().ToString();
+        }
     }
 }

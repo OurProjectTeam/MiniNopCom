@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Nop.Core.Configuration;
+using Nop.Core.Domain.Configuration;
+using Nop.Plugin.Widgets.Invite.Models;
 
 namespace Nop.Plugin.Widgets.Invite
 {
@@ -12,12 +14,6 @@ namespace Nop.Plugin.Widgets.Invite
         public CodeType CodeType { get; set; }
 
         public int MaxCodeLimit { get; set; }
-    }
-
-    public enum CodeType
-    {
-        Salty = 0,
-        Guid = 1
     }
 
 }

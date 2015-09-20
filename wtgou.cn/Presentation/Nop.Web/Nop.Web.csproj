@@ -2238,6 +2238,7 @@
     <Content Include="Themes\NopRoot\Views\Topic\TopicDetails.cshtml" />
     <Content Include="Themes\NopRoot\Views\Web.config" />
     <Content Include="Themes\NopRoot\theme.config" />
+    <Content Include="Themes\NopRoot\Views\Customer\Invite.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Plugins\bin\" />

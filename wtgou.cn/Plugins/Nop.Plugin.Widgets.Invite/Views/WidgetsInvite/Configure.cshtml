@@ -1,0 +1,44 @@
+﻿@{
+    Layout = "";
+}
+@model Nop.Plugin.Widgets.Invite.Models.ConfigurationModel
+@using Nop.Web.Framework;
+@Html.Action("StoreScopeConfiguration", "Setting", new { area = "Admin" })
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <fieldset>
+        <legend><strong>@T("Plugins.Widgets.NivoSlider.Picture1")</strong></legend>
+        <table class="adminContent">
+            <tr>
+                <td class="adminTitle">
+                @*@Html.OverrideStoreCheckboxFor(model => model.CodeType, model => model.Picture1Id, Model.ActiveStoreScopeConfiguration)*@
+                    @Html.NopLabelFor(model => model.CodeType):
+                </td>
+                <td class="adminData">
+                    @Html.EditorFor(model => model.CodeType)
+                    @Html.ValidationMessageFor(model => model.CodeType)
+                </td>
+            </tr>
+            <tr>
+                <td class="adminTitle">
+                @*@Html.OverrideStoreCheckboxFor(model => model.Text1_OverrideForStore, model => model.Text1, Model.ActiveStoreScopeConfiguration)*@
+                    @Html.NopLabelFor(model => model.MaxCodeLimit):
+                </td>
+                <td class="adminData">
+                    @Html.EditorFor(model => model.MaxCodeLimit)
+                    @Html.ValidationMessageFor(model => model.MaxCodeLimit)
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+    <br />
+    
+    <table class="adminContent">
+        <tr>
+            <td colspan="2">
+                <input type="submit" name="save" class="k-button" value="@T("Admin.Common.Save")" />
+            </td>
+        </tr>
+    </table>
+}

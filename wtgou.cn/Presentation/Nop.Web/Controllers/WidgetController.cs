@@ -38,6 +38,10 @@ namespace Nop.Web.Controllers
         public ActionResult WidgetsByZone(string widgetZone, object additionalData = null)
         {
             var cacheKey = string.Format(ModelCacheEventConsumer.WIDGET_MODEL_KEY, _storeContext.CurrentStore.Id, widgetZone);
+            if (widgetZone.ToLower().Contains("invite"))
+            {
+                string str = string.Empty;
+            }
             var cacheModel = _cacheManager.Get(cacheKey, () =>
             {
                 //model

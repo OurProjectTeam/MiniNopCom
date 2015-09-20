@@ -199,11 +199,13 @@
     <Compile Include="Common\AddressAttributeFormatter.cs" />
     <Compile Include="Common\IAddressAttributeFormatter.cs" />
     <Compile Include="Configuration\SettingExtensions.cs" />
+    <Compile Include="Customers\CustomerInviteService.cs" />
     <Compile Include="Customers\ICustomerAttributeParser.cs" />
     <Compile Include="Customers\CustomerAttributeParser.cs" />
     <Compile Include="Customers\ICustomerAttributeService.cs" />
     <Compile Include="Customers\CustomerAttributeService.cs" />
     <Compile Include="Customers\CustomerAttributeExtensions.cs" />
+    <Compile Include="Customers\ICustomerInviteService.cs" />
     <Compile Include="Helpers\IUserAgentHelper.cs" />
     <Compile Include="Helpers\UserAgentHelper.cs" />
     <Compile Include="Logging\ClearLogTask.cs" />

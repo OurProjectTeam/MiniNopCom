@@ -29,6 +29,7 @@ namespace Nop.Web.Models.Customer
         RewardPoints = 60,
         ChangePassword = 70,
         Avatar = 80,
-        ForumSubscriptions = 90
+        ForumSubscriptions = 90,
+        InviteCode = 100
     }
 }

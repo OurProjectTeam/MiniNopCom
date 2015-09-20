@@ -1730,5 +1730,11 @@ namespace Nop.Web.Controllers
         }
 
         #endregion
+
+        [NopHttpsRequirement(SslRequirement.Yes)]
+        public ActionResult Invite()
+        {
+            return View();
+        }
     }
 }

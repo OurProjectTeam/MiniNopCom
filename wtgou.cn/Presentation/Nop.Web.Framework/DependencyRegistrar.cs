@@ -12,6 +12,7 @@ using Nop.Core;
 using Nop.Core.Caching;
 using Nop.Core.Configuration;
 using Nop.Core.Data;
+using Nop.Core.Domain.Configuration;
 using Nop.Core.Fakes;
 using Nop.Core.Infrastructure;
 using Nop.Core.Infrastructure.DependencyManagement;
@@ -167,6 +168,7 @@ namespace Nop.Web.Framework
             builder.RegisterType<CustomerService>().As<ICustomerService>().InstancePerLifetimeScope();
             builder.RegisterType<CustomerRegistrationService>().As<ICustomerRegistrationService>().InstancePerLifetimeScope();
             builder.RegisterType<CustomerReportService>().As<ICustomerReportService>().InstancePerLifetimeScope();
+            builder.RegisterType<CustomerInviteService>().As<ICustomerInviteService>().InstancePerMatchingLifetimeScope();
 
             //pass MemoryCacheManager as cacheManager (cache settings between requests)
             builder.RegisterType<PermissionService>().As<IPermissionService>()
