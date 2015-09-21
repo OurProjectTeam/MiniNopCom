@@ -4,6 +4,7 @@ using Nop.Core.Caching;
 using Nop.Core.Infrastructure;
 using Nop.Core.Infrastructure.DependencyManagement;
 using Nop.Plugin.Widgets.Invite.Controllers;
+
 namespace Nop.Plugin.Widgets.Invite.Infrastructure
 {
     public class DependencyRegistrar : IDependencyRegistrar
@@ -12,7 +13,7 @@ namespace Nop.Plugin.Widgets.Invite.Infrastructure
         {
             //we cache presentation models between requests
             builder.RegisterType<WidgetsInviteController>()
-                .WithParameter(ResolvedParameter.ForNamed<ICacheManager>("nop_cache_static"));
+                .WithParameter(ResolvedParameter.ForNamed<ICacheManager>("nop_cache_static")).InstancePerLifetimeScope();
         }
 
         public int Order

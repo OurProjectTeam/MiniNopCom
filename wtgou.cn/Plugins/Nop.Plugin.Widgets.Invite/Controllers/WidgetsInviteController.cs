@@ -1,37 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.Mvc;
-using Nop.Services.Customers;
-using Nop.Web.Framework.Controllers;
+﻿using System.Web.Mvc;
 using Nop.Core;
 using Nop.Core.Caching;
 using Nop.Plugin.Widgets.Invite.Models;
 using Nop.Services.Configuration;
+using Nop.Services.Customers;
 using Nop.Services.Localization;
-using Nop.Services.Media;
 using Nop.Services.Stores;
+using Nop.Web.Framework.Controllers;
 
 namespace Nop.Plugin.Widgets.Invite.Controllers
 {
     public class WidgetsInviteController : BasePluginController
     {
         private readonly IWorkContext _workContext;
-        private readonly IStoreContext _storeContext;
-        private readonly IStoreService _storeService;
-        private readonly IPictureService _pictureService;
         private readonly ISettingService _settingService;
         private readonly ICacheManager _cacheManager;
         private readonly ILocalizationService _localizationService;
         private readonly ICustomerInviteService _customerInviteService;
-
+        private readonly IStoreService _storeService;
+        
         public WidgetsInviteController(
             ISettingService settingService,
             ICacheManager cacheManager,
             ILocalizationService localizationService,
             ICustomerInviteService customerInviteService,
+            IStoreService storeService,
             IWorkContext workContext)
         {
             this._settingService = settingService;
@@ -39,6 +32,7 @@ namespace Nop.Plugin.Widgets.Invite.Controllers
             this._localizationService = localizationService;
             this._customerInviteService = customerInviteService;
             this._workContext = workContext;
+            this._storeService = storeService;
         }
 
         [AdminAuthorize]
