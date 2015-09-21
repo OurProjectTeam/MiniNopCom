@@ -1,12 +1,15 @@
 ﻿using System.Web.Mvc;
+using Autofac;
 using Nop.Core;
 using Nop.Core.Caching;
+using Nop.Core.Infrastructure;
 using Nop.Plugin.Widgets.Invite.Models;
 using Nop.Services.Configuration;
 using Nop.Services.Customers;
 using Nop.Services.Localization;
 using Nop.Services.Stores;
 using Nop.Web.Framework.Controllers;
+using Nop.Core.Infrastructure.DependencyManagement;
 
 namespace Nop.Plugin.Widgets.Invite.Controllers
 {
@@ -18,7 +21,7 @@ namespace Nop.Plugin.Widgets.Invite.Controllers
         private readonly ILocalizationService _localizationService;
         private readonly ICustomerInviteService _customerInviteService;
         private readonly IStoreService _storeService;
-        
+
         public WidgetsInviteController(
             ISettingService settingService,
             ICacheManager cacheManager,
@@ -28,7 +31,6 @@ namespace Nop.Plugin.Widgets.Invite.Controllers
             IWorkContext workContext)
         {
             this._settingService = settingService;
-            this._cacheManager = cacheManager;
             this._localizationService = localizationService;
             this._customerInviteService = customerInviteService;
             this._workContext = workContext;

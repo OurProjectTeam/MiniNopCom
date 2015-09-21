@@ -13,12 +13,12 @@ namespace Nop.Plugin.Widgets.Invite.Infrastructure
         {
             //we cache presentation models between requests
             builder.RegisterType<WidgetsInviteController>()
-                .WithParameter(ResolvedParameter.ForNamed<ICacheManager>("nop_cache_static")).InstancePerLifetimeScope();
+                .WithParameter(ResolvedParameter.ForNamed<ICacheManager>("nop_cache_static"));
         }
 
         public int Order
         {
-            get { return 2; }
+            get { return 3; }
         }
     }
 }

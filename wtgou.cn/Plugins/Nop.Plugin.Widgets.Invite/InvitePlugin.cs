@@ -1,23 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Web.Routing;
-using Nop.Core;
 using Nop.Core.Plugins;
 using Nop.Services.Cms;
-using Nop.Services.Configuration;
 
 namespace Nop.Plugin.Widgets.Invite
 {
     public class InvitePlugin : BasePlugin, IWidgetPlugin
     {
-        private readonly ISettingService _settingService;
-        private readonly IWebHelper _webHelper;
-
-        public InvitePlugin(ISettingService settingService, IWebHelper webHelper)
-        {
-            this._settingService = settingService;
-            this._webHelper = webHelper;
-        }
-
         /// <summary>
         /// Gets widget zones where this widget should be rendered
         /// </summary>

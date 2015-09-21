@@ -168,7 +168,7 @@ namespace Nop.Web.Framework
             builder.RegisterType<CustomerService>().As<ICustomerService>().InstancePerLifetimeScope();
             builder.RegisterType<CustomerRegistrationService>().As<ICustomerRegistrationService>().InstancePerLifetimeScope();
             builder.RegisterType<CustomerReportService>().As<ICustomerReportService>().InstancePerLifetimeScope();
-            builder.RegisterType<CustomerInviteService>().As<ICustomerInviteService>().InstancePerMatchingLifetimeScope();
+            builder.RegisterType<CustomerInviteService>().As<ICustomerInviteService>().InstancePerLifetimeScope();
 
             //pass MemoryCacheManager as cacheManager (cache settings between requests)
             builder.RegisterType<PermissionService>().As<IPermissionService>()
