@@ -46,7 +46,7 @@ namespace Nop.Plugin.Widgets.Invite.Controllers
             var inviteSettings = _settingService.LoadSetting<InviteSetting>(storeScope);
             var model = new ConfigurationModel();
             model.CodeType = inviteSettings.CodeType;
-            model.MaxCodeLimit = 10;
+            model.MaxCodeLimit = inviteSettings.MaxCodeLimit;
 
             model.ActiveStoreScopeConfiguration = storeScope;
             //if (storeScope > 0)
@@ -68,9 +68,12 @@ namespace Nop.Plugin.Widgets.Invite.Controllers
         {
             //load settings for a chosen store scope
             var storeScope = this.GetActiveStoreScopeConfiguration(_storeService, _workContext);
-            var nivoSliderSettings = _settingService.LoadSetting<InviteSetting>(storeScope);
-            nivoSliderSettings.CodeType = model.CodeType;
-            nivoSliderSettings.MaxCodeLimit = model.MaxCodeLimit;
+            var inviteSettings = _settingService.LoadSetting<InviteSetting>(storeScope);
+            inviteSettings.CodeType = model.CodeType;
+            inviteSettings.MaxCodeLimit = model.MaxCodeLimit;
+
+            _settingService.SaveSetting(inviteSettings, x => x.CodeType, storeScope);
+            _settingService.SaveSetting(inviteSettings, x => x.MaxCodeLimit, storeScope);
 
             //now clear settings cache
             _settingService.ClearCache();
@@ -82,8 +85,9 @@ namespace Nop.Plugin.Widgets.Invite.Controllers
         [ChildActionOnly]
         public ActionResult PublicInfo()
         {
-            //var nivoSliderSettings = _settingService.LoadSetting<InviteSetting>(_storeContext.CurrentStore.Id);
-            var customerCode = _customerInviteService.CustomerInviteCodes(2, 10, _workContext.CurrentCustomer.Id);
+            var storeScope = this.GetActiveStoreScopeConfiguration(_storeService, _workContext);
+            var inviteSettings = _settingService.LoadSetting<InviteSetting>(storeScope);
+            var customerCode = _customerInviteService.CustomerInviteCodes((int)inviteSettings.CodeType, inviteSettings.MaxCodeLimit, _workContext.CurrentCustomer.Id);
             var model = new PublicInfoModel();
             model.List = customerCode;
             //model.Picture1Url = GetPictureUrl(nivoSliderSettings.Picture1Id);

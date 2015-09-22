@@ -86,7 +86,7 @@ namespace Nop.Services.Customers
                 for (int i = 0; i < maxCodeLimit; i++)
                 {
                     string code = string.Empty;
-                    if (codeType == 1) //salty
+                    if (codeType == 0) //salty
                     {
                         code = CommonHelper.ShortUniqueCode();
                     }

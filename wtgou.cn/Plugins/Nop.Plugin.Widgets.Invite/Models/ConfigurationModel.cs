@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,8 +13,10 @@ namespace Nop.Plugin.Widgets.Invite.Models
     {
         public int ActiveStoreScopeConfiguration { get; set; }
 
+        [DisplayName("验证码类型")]
         public CodeType CodeType { get; set; }
 
+        [DisplayName("验证码个数")]
         public int MaxCodeLimit { get; set; }
     }
     

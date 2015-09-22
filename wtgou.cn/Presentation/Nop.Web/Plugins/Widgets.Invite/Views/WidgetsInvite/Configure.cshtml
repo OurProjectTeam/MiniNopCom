@@ -2,6 +2,7 @@
     Layout = "";
 }
 @model Nop.Plugin.Widgets.Invite.Models.ConfigurationModel
+
 @using Nop.Web.Framework;
 @Html.Action("StoreScopeConfiguration", "Setting", new { area = "Admin" })
 @using (Html.BeginForm())
@@ -12,17 +13,17 @@
         <table class="adminContent">
             <tr>
                 <td class="adminTitle">
-                @*@Html.OverrideStoreCheckboxFor(model => model.CodeType, model => model.Picture1Id, Model.ActiveStoreScopeConfiguration)*@
                     @Html.NopLabelFor(model => model.CodeType):
                 </td>
                 <td class="adminData">
-                    @Html.EditorFor(model => model.CodeType)
-                    @Html.ValidationMessageFor(model => model.CodeType)
+                    <select name="CodeType" id="CodeType" class="CodeType">
+                        <option value="0" @((int)Model.CodeType == 0 ? "selected='selected'" : "")>Salty</option>
+                        <option value="1" @((int)Model.CodeType == 1 ? "selected='selected'" : "")>Guid</option>
+                    </select>
                 </td>
             </tr>
             <tr>
                 <td class="adminTitle">
-                @*@Html.OverrideStoreCheckboxFor(model => model.Text1_OverrideForStore, model => model.Text1, Model.ActiveStoreScopeConfiguration)*@
                     @Html.NopLabelFor(model => model.MaxCodeLimit):
                 </td>
                 <td class="adminData">
@@ -33,7 +34,7 @@
         </table>
     </fieldset>
     <br />
-    
+
     <table class="adminContent">
         <tr>
             <td colspan="2">
