@@ -65,12 +65,15 @@ namespace Nop.Services.Customers
                 var query = from q in _inviteCodeRepository.Table where q.CustomerId == customerId select q;
                 if (query.Any())
                 {
-                    codelist.AddRange(query.Select(q => new CustomerInviteCode
+                    foreach (var item in query.ToList())
                     {
-                        Code = q.Code,
-                        IsUsed = q.IsUsed,
-                        CustomerId = customerId
-                    }));
+                        codelist.Add(new CustomerInviteCode()
+                        {
+                            Code = item.Code,
+                            IsUsed = item.IsUsed,
+                            CustomerId = item.CustomerId
+                        });
+                    }
                 }
                 return codelist;
             });

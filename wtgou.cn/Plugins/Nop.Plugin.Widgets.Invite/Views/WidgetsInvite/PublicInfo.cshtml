@@ -9,40 +9,32 @@
     <div class="page-body">
         @if (Model.List.Count > 0)
         {
-            <div class="section recurring-payments">
-                <div class="title">
-                    <strong>我的邀请码</strong>
-                </div>
-                @using (Html.BeginForm())
-                {
-                    <div class="table-wrapper">
-                        <table class="data-table">
-                            <thead>
-                                <tr>
-                                    <th class="start-date">
-                                        邀请码
-                                    </th>
-                                    <th class="cycle-info">
-                                        使用情况
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (var item in Model.List)
-                                {
-                                    <tr>
-                                        <td class="start-date">
-                                            @item.Code
-                                        </td>
-                                        <td class="cycle-info">
-                                            @(item.IsUsed ? "已使用" : "未使用")
-                                        </td>
-                                    </tr>
-                                }
-                            </tbody>
-                        </table>
-                    </div>
-                }
+            <div class="panel panel-default">
+                <!-- Default panel contents -->
+                <div class="panel-heading">我的邀请码</div>
+
+                <!-- Table -->
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>邀请码</th>
+                            <th>使用情况</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.List)
+                        {
+                            <tr>
+                                <td class="start-date">
+                                    @item.Code
+                                </td>
+                                <td class="cycle-info">
+                                    @(item.IsUsed ? "已使用" : "未使用")
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
             </div>
         }
     </div>
