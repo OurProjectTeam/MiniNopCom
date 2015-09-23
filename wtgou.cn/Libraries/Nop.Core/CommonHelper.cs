@@ -338,8 +338,7 @@ namespace Nop.Core
         /// <returns></returns>
         public static string ShortUniqueCode()
         {
-            string code = GuidCode();
-            return code.GetHashCode().ToString();
+            return GuidCode().GetHashCode().ToString("x");
         }
 
         public static string GuidCode()

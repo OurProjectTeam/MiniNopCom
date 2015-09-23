@@ -101,6 +101,8 @@ namespace Nop.Services.Customers
                         IsUsed = false
                     });
                 }
+                string key = string.Format(CUSTOMER_INVIETECODE_Signle, _workContext.CurrentCustomer.Id);
+                _cacheManager.Remove(key);
             }
         }
 

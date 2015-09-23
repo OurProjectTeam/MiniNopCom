@@ -49,14 +49,6 @@ namespace Nop.Plugin.Widgets.Invite.Controllers
             model.MaxCodeLimit = inviteSettings.MaxCodeLimit;
 
             model.ActiveStoreScopeConfiguration = storeScope;
-            //if (storeScope > 0)
-            //{
-            //    model.CodeType = _settingService.SettingExists(inviteSettings, x => x.CodeType, storeScope);
-            //    model.MaxCodeLimit = _settingService.SettingExists(inviteSettings, x => x.MaxCodeLimit, storeScope);
-            //    model.EcommerceScript_OverrideForStore = _settingService.SettingExists(googleAnalyticsSettings, x => x.EcommerceScript, storeScope);
-            //    model.EcommerceDetailScript_OverrideForStore = _settingService.SettingExists(googleAnalyticsSettings, x => x.EcommerceDetailScript, storeScope);
-            //    model.IncludingTax_OverrideForStore = _settingService.SettingExists(googleAnalyticsSettings, x => x.IncludingTax, storeScope);
-            //}
 
             return View("~/Plugins/Widgets.Invite/Views/WidgetsInvite/Configure.cshtml", model);
         }
@@ -90,32 +82,6 @@ namespace Nop.Plugin.Widgets.Invite.Controllers
             var customerCode = _customerInviteService.CustomerInviteCodes((int)inviteSettings.CodeType, inviteSettings.MaxCodeLimit, _workContext.CurrentCustomer.Id);
             var model = new PublicInfoModel();
             model.List = customerCode;
-            //model.Picture1Url = GetPictureUrl(nivoSliderSettings.Picture1Id);
-            //model.Text1 = nivoSliderSettings.Text1;
-            //model.Link1 = nivoSliderSettings.Link1;
-
-            //model.Picture2Url = GetPictureUrl(nivoSliderSettings.Picture2Id);
-            //model.Text2 = nivoSliderSettings.Text2;
-            //model.Link2 = nivoSliderSettings.Link2;
-
-            //model.Picture3Url = GetPictureUrl(nivoSliderSettings.Picture3Id);
-            //model.Text3 = nivoSliderSettings.Text3;
-            //model.Link3 = nivoSliderSettings.Link3;
-
-            //model.Picture4Url = GetPictureUrl(nivoSliderSettings.Picture4Id);
-            //model.Text4 = nivoSliderSettings.Text4;
-            //model.Link4 = nivoSliderSettings.Link4;
-
-            //model.Picture5Url = GetPictureUrl(nivoSliderSettings.Picture5Id);
-            //model.Text5 = nivoSliderSettings.Text5;
-            //model.Link5 = nivoSliderSettings.Link5;
-
-            //if (string.IsNullOrEmpty(model.Picture1Url) && string.IsNullOrEmpty(model.Picture2Url) &&
-            //    string.IsNullOrEmpty(model.Picture3Url) && string.IsNullOrEmpty(model.Picture4Url) &&
-            //    string.IsNullOrEmpty(model.Picture5Url))
-            //    //no pictures uploaded
-            //    return Content("");
-
 
             return View("~/Plugins/Widgets.Invite/Views/WidgetsInvite/PublicInfo.cshtml", model);
         }
