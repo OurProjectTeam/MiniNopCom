@@ -29,12 +29,12 @@
 					@*view mode*@
 					@if (Model.PagingFilteringContext.AllowProductViewModeChanging && Model.Products.Count > 0)
 					{
-						<div class="col-md-4 pull-text-center">
+						<div class="col-md-3 pull-text-center">
 							<div class="row">
-								<div class="col-md-4 remove_right_padding">
+								<div class="col-md-3 remove_right_padding">
 									<span>@T("Catalog.ViewMode")</span>
 								</div>
-								<div class="col-md-5 remove_left_padding">
+								<div class="col-md-9 remove_left_padding">
 									@Html.DropDownList("products-viewmode", Model.PagingFilteringContext.AvailableViewModes, new { @class = "form-control dropdown-filter", onchange = "setLocation(this.value);" })
 								</div>
 							</div>
