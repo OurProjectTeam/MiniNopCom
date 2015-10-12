@@ -45,15 +45,17 @@ namespace Nop.Services.Customers
         private readonly IRepository<CustomerInviteCode> _inviteCodeRepository;
         private readonly ICacheManager _cacheManager;
         private readonly IWorkContext _workContext;
-
+        private readonly IEventPublisher _eventPublisher;
         #endregion
         public CustomerInviteService(ICacheManager cacheManager,
             IRepository<CustomerInviteCode> inviteCodeRepository,
+            IEventPublisher eventPublisher,
             IWorkContext workContext)
         {
             this._cacheManager = cacheManager;
             this._inviteCodeRepository = inviteCodeRepository;
             this._workContext = workContext;
+            this._eventPublisher = eventPublisher;
         }
 
         public List<CustomerInviteCode> GetCustomerCode(int customerId)
@@ -115,6 +117,50 @@ namespace Nop.Services.Customers
             }
             CreateNewCode(codeType, maxCodeLimit);
             return GetCustomerCode(customerId);
+        }
+
+        public bool IsValidCustomerInviteCode(string code)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(code))
+                {
+                    var list = from p in _inviteCodeRepository.Table where p.Code == code && !p.IsUsed select p;
+                    if (list.Any())
+                    {
+                        return true;
+                    }
+                }
+                return false;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public bool SetInviteCodeBeUsed(string code)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(code))
+                {
+                    var invitecode = from p in _inviteCodeRepository.Table where p.Code == code && !p.IsUsed select p;
+                    if (invitecode.Any() && invitecode.FirstOrDefault() != null)
+                    {
+                        var codeModel = invitecode.FirstOrDefault();
+                        codeModel.IsUsed = true;
+                        _inviteCodeRepository.Update(codeModel);
+
+                        _eventPublisher.EntityUpdated(codeModel);
+                        return true;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+            }
+            return false;
         }
     }
 }

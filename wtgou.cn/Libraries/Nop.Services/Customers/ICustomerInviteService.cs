@@ -14,5 +14,9 @@ namespace Nop.Services.Customers
         void CreateNewCode(int codeType, int maxCodeLimit);
 
         List<CustomerInviteCode> CustomerInviteCodes(int codeType, int maxCodeLimit, int customerId);
+
+        bool IsValidCustomerInviteCode(string code);
+
+        bool SetInviteCodeBeUsed(string code);
     }
 }

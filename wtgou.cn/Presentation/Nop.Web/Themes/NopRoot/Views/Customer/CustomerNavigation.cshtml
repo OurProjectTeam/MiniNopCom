@@ -1,4 +1,6 @@
-﻿@model CustomerNavigationModel           
+﻿@model CustomerNavigationModel
+@using Nop.Core
+@using Nop.Core.Infrastructure
 @using Nop.Web.Models.Customer;
 <div class="panel panel-default side-nav">
     <div class="panel-heading">
@@ -97,12 +99,18 @@
                                                                                  {<text>inactive</text>}">@T("Account.ForumSubscriptions")</a>
                                                                             </li>
             }
-
-            <li>
-                <a href="@Url.Action("Invite","Customer")" class="@(Model.SelectedTab == CustomerNavigationEnum.InviteCode ? "active" : "inactive")">
-                    邀请码
-                </a>
-            </li>
+            @if (WorkContext.CurrentCustomer != null && WorkContext.CurrentCustomer.CustomerRoles != null && WorkContext.CurrentCustomer.CustomerRoles.Count > 0)
+            {
+                var list = from p in WorkContext.CurrentCustomer.CustomerRoles where p.Id == 1 select p;
+                if (list.Any())
+                {
+                    <li>
+                        <a href="@Url.Action("Invite","Customer")" class="@(Model.SelectedTab == CustomerNavigationEnum.InviteCode ? "active" : "inactive")">
+                            邀请码
+                        </a>
+                    </li>
+                }
+            }
             @Html.Widget("account_navigation_after")
         </ul>
     </div>

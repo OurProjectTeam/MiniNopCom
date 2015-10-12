@@ -151,5 +151,8 @@ namespace Nop.Web.Models.Customer
         public bool DisplayCaptcha { get; set; }
 
         public IList<CustomerAttributeModel> CustomerAttributes { get; set; }
+
+        [NopResourceDisplayName("Account.RegisteInviteCode")]
+        public string InviteCode { get; set; }
     }
 }
