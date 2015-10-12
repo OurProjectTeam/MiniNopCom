@@ -126,16 +126,16 @@
                         @if (!String.IsNullOrEmpty(Model.FullDescription))
                         {
                           
-                            <li class="active"><a href="#description" data-toggle="tab">Description</a></li>
+                            <li class="active"><a href="#description" data-toggle="tab">商品介绍</a></li>
                         }
                         @if (!String.IsNullOrEmpty(@Html.Partial("_ProductSpecifications", Model.ProductSpecifications).ToString()))
                         {
 
-                            <li><a href="#specification" data-toggle="tab">Specifications</a></li>
+                            <li><a href="#specification" data-toggle="tab">规格参数</a></li>
                         }
                         @if (!String.IsNullOrEmpty(@Html.Partial("_ProductTags", Model.ProductTags).ToString()))
                         {
-                            <li><a href="#tags" data-toggle="tab">Products Tags</a></li>
+                            <li><a href="#tags" data-toggle="tab">产品标签</a></li>
                         }
                     </ul>
 
