@@ -12,16 +12,16 @@
     {
         if (Model.Warnings.Count > 0)
         {
-        <div class="alert alert-danger square-box">
-            
+            <div class="alert alert-danger square-box">
+
                 @for (int i = 0; i < Model.Warnings.Count; i++)
                 {
                     <div>@Model.Warnings[i]</div>
                 }
-            
-        </div>
+
+            </div>
         }
-@*we add enctype = "multipart/form-data" because "File upload" attribute control type requries it*@
+        @*we add enctype = "multipart/form-data" because "File upload" attribute control type requries it*@
         using (Html.BeginRouteForm("ShoppingCart", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
             <div class="table-responsive">
@@ -114,7 +114,7 @@
                                     }
                                     @if (Model.IsEditable && item.AllowItemEditing)
                                     {
-                                        var editCartItemUrl = Url.RouteUrl("Product", new {SeName = item.ProductSeName});
+                                        var editCartItemUrl = Url.RouteUrl("Product", new { SeName = item.ProductSeName });
                                         editCartItemUrl = webHelper.ModifyQueryString(editCartItemUrl, "updatecartitemid=" + item.Id, null);
                                         <div class="edit-item">
                                             <a class="btn btn-default" href="@editCartItemUrl">@T("Common.Edit")</a>
@@ -122,14 +122,14 @@
                                     }
                                     @if (item.Warnings.Count > 0)
                                     {
-                                
+
                                         <div class="alert alert-danger square-box">
                                             @for (int i = 0; i < item.Warnings.Count; i++)
                                             {
                                                 <div>@item.Warnings[i]</div>
                                             }
                                         </div>
-                                
+
                                     }
                                 </td>
                                 <td class="unit-price nobr">
@@ -172,110 +172,110 @@
                     </tbody>
                 </table>
             </div>
-                if (!String.IsNullOrEmpty(Model.CheckoutAttributeInfo))
-                {
-        <div class="selected-checkout-attributes">
-            @Html.Raw(Model.CheckoutAttributeInfo)
-        </div>
-                }
-        <div class="buttons">
-            @if (Model.IsEditable)
+            if (!String.IsNullOrEmpty(Model.CheckoutAttributeInfo))
             {
-                <div class="common-buttons">
-                    <input type="submit" name="updatecart" value="@T("ShoppingCart.UpdateCart")" class="btn btn-default" />
-                    <input type="submit" name="continueshopping" value="@T("ShoppingCart.ContinueShopping")" class="btn btn-default" />
+                <div class="selected-checkout-attributes">
+                    @Html.Raw(Model.CheckoutAttributeInfo)
                 </div>
-                @Html.Partial("_CheckoutAttributes", Model.CheckoutAttributes, new ViewDataDictionary())
             }
-        </div>
-        <div class="cart-footer">
-            @Html.Widget("order_summary_cart_footer")
-            @if (Model.IsEditable)
-            {
-                if (!String.IsNullOrEmpty(Model.MinOrderSubtotalWarning))
+            <div class="buttons">
+                @if (Model.IsEditable)
                 {
-                <div>
-                    <div class="min-amount-warning">
-                        @Model.MinOrderSubtotalWarning
+                    <div class="common-buttons">
+                        <input type="submit" name="updatecart" value="@T("ShoppingCart.UpdateCart")" class="btn btn-default" />
+                        <input type="submit" name="continueshopping" value="@T("ShoppingCart.ContinueShopping")" class="btn btn-default" />
                     </div>
-                </div>
+                    @*@Html.Partial("_CheckoutAttributes", Model.CheckoutAttributes, new ViewDataDictionary())*@
                 }
-            }
-            <div class="row">
-                <div class="col-md-8">
-                    <div class="cart-collaterals">
-                        @if (Model.IsEditable)
-                        {
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="deals">
-                                        @Html.Partial("_DiscountBox", Model.DiscountBox)
-                                        @Html.Partial("_GiftCardBox", Model.GiftCardBox)
-                                        @Html.Widget("order_summary_content_deals")
-                                    </div>
-                                </div>
-                                
-                                    @Html.Partial("EstimateShipping", Model.EstimateShipping)
-                               
+            </div>
+            <div class="cart-footer">
+                @Html.Widget("order_summary_cart_footer")
+                @if (Model.IsEditable)
+                {
+                    if (!String.IsNullOrEmpty(Model.MinOrderSubtotalWarning))
+                    {
+                        <div>
+                            <div class="min-amount-warning">
+                                @Model.MinOrderSubtotalWarning
                             </div>
-                        }
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="offer offer-default">
-                        @Html.Action("OrderTotals", "ShoppingCart", new { isEditable = Model.IsEditable })
-                        @if (Model.IsEditable)
-                        {
-                            if (Model.TermsOfServiceOnShoppingCartPage)
+                        </div>
+                    }
+                }
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="cart-collaterals">
+                            @if (Model.IsEditable)
                             {
-                                <div id="terms-of-service-warning-box" title="@T("Checkout.TermsOfService")" style="display:none;">
-                                    <p>@T("Checkout.TermsOfService.PleaseAccept")</p>
-                                </div><br/>
-                                <div class="terms-of-service">
-                                    <input id="termsofservice" type="checkbox" name="termsofservice" />
-                                    @T("Checkout.TermsOfService.IAccept")
-                                    <span class="read" onclick="javascript:OpenWindow('@Url.RouteUrl("TopicPopup", new { SystemName = "conditionsofUse" })', 450, 500, true)"><a>@T("Checkout.TermsOfService.Read")</a></span>
-                                </div><br/>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="deals">
+                                            @Html.Partial("_DiscountBox", Model.DiscountBox)
+                                            @*@Html.Partial("_GiftCardBox", Model.GiftCardBox)*@
+                                            @*@Html.Widget("order_summary_content_deals")*@
+                                        </div>
+                                    </div>
+
+                                    @*@Html.Partial("EstimateShipping", Model.EstimateShipping)*@
+
+                                </div>
                             }
-                            <div class="checkout-buttons">
-                                @if (String.IsNullOrEmpty(Model.MinOrderSubtotalWarning))
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="offer offer-default">
+                            @Html.Action("OrderTotals", "ShoppingCart", new { isEditable = Model.IsEditable })
+                            @if (Model.IsEditable)
+                            {
+                                if (Model.TermsOfServiceOnShoppingCartPage)
                                 {
-                                    <script type="text/javascript">
-                                        $(document).ready(function () {
-                                            $('#checkout').click(function () {
-                                                //terms of service
-                                                var termOfServiceOk = true;
-                                                if ($('#termsofservice').length > 0) {
-                                                    //terms of service element exists
-                                                    if (!$('#termsofservice').is(':checked')) {
-                                                        $("#terms-of-service-warning-box").dialog();
-                                                        termOfServiceOk = false;
-                                                    } else {
-                                                        termOfServiceOk = true;
-                                                    }
-                                                }
-                                                return termOfServiceOk;
-                                            });
-                                        });
-                                    </script>
-                                    <button type="submit" id="checkout" name="checkout" value="checkout" class="btn btn-default">
-                                        <span>@T("Checkout.Button")</span>
-                                    </button>
+                                    <div id="terms-of-service-warning-box" title="@T("Checkout.TermsOfService")" style="display:none;">
+                                        <p>@T("Checkout.TermsOfService.PleaseAccept")</p>
+                                    </div><br />
+                                    <div class="terms-of-service">
+                                        <input id="termsofservice" type="checkbox" name="termsofservice" />
+                                        @T("Checkout.TermsOfService.IAccept")
+                                        <span class="read" onclick="javascript:OpenWindow('@Url.RouteUrl("TopicPopup", new { SystemName = "conditionsofUse" })', 450, 500, true)"><a>@T("Checkout.TermsOfService.Read")</a></span>
+                                    </div><br />
                                 }
-                            </div>
-                            <div class="addon-buttons">
-                                @*Payment method buttons (e.g. GoogleCheckoutButton, Paypal Express)*@
-                                @Html.Partial("_ButtonPaymentMethod", Model)
-                            </div>
-                        }
+                                <div class="checkout-buttons">
+                                    @if (String.IsNullOrEmpty(Model.MinOrderSubtotalWarning))
+                                    {
+                                        <script type="text/javascript">
+                                            $(document).ready(function () {
+                                                $('#checkout').click(function () {
+                                                    //terms of service
+                                                    var termOfServiceOk = true;
+                                                    if ($('#termsofservice').length > 0) {
+                                                        //terms of service element exists
+                                                        if (!$('#termsofservice').is(':checked')) {
+                                                            $("#terms-of-service-warning-box").dialog();
+                                                            termOfServiceOk = false;
+                                                        } else {
+                                                            termOfServiceOk = true;
+                                                        }
+                                                    }
+                                                    return termOfServiceOk;
+                                                });
+                                            });
+                                        </script>
+                                        <button type="submit" id="checkout" name="checkout" value="checkout" class="btn btn-default">
+                                            <span>@T("Checkout.Button")</span>
+                                        </button>
+                                    }
+                                </div>
+                                <div class="addon-buttons">
+                                    @*Payment method buttons (e.g. GoogleCheckoutButton, Paypal Express)*@
+                                    @Html.Partial("_ButtonPaymentMethod", Model)
+                                </div>
+                            }
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        if (Model.IsEditable)
-        {
-             @Html.Action("CrossSellProducts", "Product")
-        }
+            if (Model.IsEditable)
+            {
+                @Html.Action("CrossSellProducts", "Product")
+            }
         }
     }
     else
