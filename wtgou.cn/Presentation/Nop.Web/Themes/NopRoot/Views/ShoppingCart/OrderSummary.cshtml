@@ -185,7 +185,9 @@
                         <input type="submit" name="updatecart" value="@T("ShoppingCart.UpdateCart")" class="btn btn-default" />
                         <input type="submit" name="continueshopping" value="@T("ShoppingCart.ContinueShopping")" class="btn btn-default" />
                     </div>
-                    @*@Html.Partial("_CheckoutAttributes", Model.CheckoutAttributes, new ViewDataDictionary())*@
+                    <div class="hidden">
+                        @Html.Partial("_CheckoutAttributes", Model.CheckoutAttributes, new ViewDataDictionary())
+                    </div>
                 }
             </div>
             <div class="cart-footer">

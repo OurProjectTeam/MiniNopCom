@@ -25,3 +25,4 @@ Tax.CountryStateZip
 Widgets.GoogleAnalytics
 Widgets.NivoSlider
 Widgets.Invite
+Payments.AliPay

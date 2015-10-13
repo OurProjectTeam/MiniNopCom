@@ -1,5 +1,5 @@
-﻿Group: Payment methods
-FriendlyName: Credit Card
+Group: Payment methods
+FriendlyName: 信用卡
 SystemName: Payments.Manual
 Version: 1.22
 SupportedVersions: 3.60
