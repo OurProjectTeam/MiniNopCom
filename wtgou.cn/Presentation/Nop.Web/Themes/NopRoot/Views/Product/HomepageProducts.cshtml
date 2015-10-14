@@ -37,7 +37,7 @@
                     {
                         @:<div class="item active">
                         @:<div class="row box-products" >
-                    }else if(ci%3==0){
+                    }else if(ci%9==0){
                         @:<div class="item">
                         @:<div class="row box-products" >
                     }
@@ -49,13 +49,13 @@
                     </div>
                     
 
-                    if(ci%3==2){
+                    if(ci%9==8){
                         @:</div>
                         @:</div>
                     }
                     ci++;
                 }
-                @if(ci%3==2){
+                @if(ci%9==8){
                     @:</div>
                     @:</div>
                 }
