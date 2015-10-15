@@ -2240,6 +2240,7 @@
     <Content Include="Themes\NopRoot\Views\Web.config" />
     <Content Include="Themes\NopRoot\theme.config" />
     <Content Include="Themes\NopRoot\Views\Customer\Invite.cshtml" />
+    <Content Include="Views\Home\AdInfo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Plugins\bin\" />
